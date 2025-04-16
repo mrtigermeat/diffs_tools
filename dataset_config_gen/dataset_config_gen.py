@@ -42,7 +42,7 @@ val_range = click.IntRange(min=0, max=10, clamp=True)
 @click.command(help="Tool used to automate the creation of the dataset section of a DiffSinger configuration. For DSv2 Only!")
 @click.argument('in_path', metavar='PATH')
 @click.option('-v', '--val_num', type=val_range, required=False, default=1, help="Amount of validation files chosen per dataset.")
-def build_db_config(in_path: str, val_num):
+def build_db_config(in_path: str, val_num: int):
 	datasets = []
 	speakers = {}
 	db_idx = 0
