@@ -1,3 +1,4 @@
+import sys
 import csv
 import random
 import click
@@ -47,8 +48,14 @@ def build_db_config(in_path: str, val_num: int):
 	datasets = []
 	speakers = {}
 	db_idx = 0
+	in_path = P(in_path)
+	transcription_path = in_path / '**' / 'transcriptions.csv'
 
-	for i, db in tqdm(enumerate(sorted(glob(f"{in_path}/**/transcriptions.csv", recursive=True)))):
+	if not in_path.exists():
+		print('Unable to open specified path')
+		sys.exit(1)
+
+	for i, db in tqdm(enumerate(sorted(glob(str(transcription_path), recursive=True)))):
 		name_list = []
 		temp_dict = {}
 		db_path = P(db)
