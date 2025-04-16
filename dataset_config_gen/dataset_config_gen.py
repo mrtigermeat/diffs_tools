@@ -21,8 +21,9 @@ def sort_val(trns_path: str, val_num: int):
 	name_list = []
 	val_list = []
 	trns = []
+	trns_path = P(trns_path)
 
-	with open(trns_path, 'r', encoding='utf-8') as csv_file:
+	with open(str(trns_path), 'r', encoding='utf-8') as csv_file:
 		trns_read = csv.DictReader(csv_file)
 
 		for row in trns_read:
